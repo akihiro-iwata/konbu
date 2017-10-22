@@ -8,8 +8,22 @@ This api is deliverables for 'Advanced course of Cloud Infrastructure'.
 
 https://aiit.ac.jp/
 
+## vHosts
+```
+<virtualhost *:80 >
+    DocumentRoot "/var/www/Konbu/public"
+    <directory />
+        options followsymlinks
+        allowoverride all
+        require all granted
+    </directory>
+</virtualhost>
+
+```
+
 ## Schemas
 WIP
 
 ## Parameters
 WIP
+

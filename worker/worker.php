@@ -22,6 +22,8 @@ if (PHP_SAPI == 'cli') {
 
     $callback = function ($msg) {
         echo " [x] Received ", $msg->body, "\n";
+        echo " [x] Correlation Id ", $msg->get('correlation_id'), "\n";
+
         instancesAdd(); // 仮想マシン起動
         echo " [x] Done", "\n";
         /*
