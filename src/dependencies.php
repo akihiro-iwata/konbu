@@ -2,7 +2,6 @@
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 
 // DIC configuration
-
 $container = $app->getContainer();
 
 // view renderer
@@ -29,4 +28,14 @@ $container['connection'] = function ($c){
         $rabbit['user'],
         $rabbit['pass']
     );
+};
+
+// Eloquent
+$container['database'] = function ($c){
+    $capsule = new \Illuminate\Database\Capsule\Manager;
+    $capsule->addConnection($c['settings']['db']);
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
+
+    return $capsule;
 };

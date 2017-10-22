@@ -3,6 +3,7 @@ return [
     'settings' => [
         'displayErrorDetails' => true, // set to false in production
         'addContentLengthHeader' => false, // Allow the web server to send the content-length header
+        'determineRouteBeforeAppMiddleware' => false,
 
         // Renderer settings
         'renderer' => [
@@ -17,10 +18,21 @@ return [
         ],
 
         'rabbitMQ' => [
-            'host' => isset($_ENV['rabbit-host']) ? $_ENV['rabbit-host'] : 'localhost',
-            'port' => isset($_ENV['rabbit-port']) ? $_ENV['rabbit-port'] : '5672',
-            'user' => isset($_ENV['rabbit-user']) ? $_ENV['rabbit-user'] : 'guest',
-            'pass' => isset($_ENV['rabbit-pass']) ? $_ENV['rabbit-pass'] : 'guest',
+            'host' => getenv('rabbit-host') ? getenv('rabbit-host') : 'localhost',
+            'port' => getenv('rabbit-port') ? getenv('rabbit-port') : '5672',
+            'user' => getenv('rabbit-user') ? getenv('rabbit-user') : 'guest',
+            'pass' => getenv('rabbit-pass') ? getenv('rabbit-pass') : 'guest',
+        ],
+        'db' => [
+            'host' => getenv('db_host'),
+            'port' => getenv('db_port'),
+            'username' => getenv('db_user'),
+            'password' => getenv('db_pass'),
+            'database' => getenv('db_name'),
+            'driver' => 'mysql',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
         ],
     ],
 ];
