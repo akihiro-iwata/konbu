@@ -1,5 +1,5 @@
 .idea/*
-vendor/*
-logs/
-!/logs/README.md
-composer.lock
+api/vendor/*
+api/logs/
+!/api/logs/README.md
+api/composer.lock
