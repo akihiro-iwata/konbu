@@ -2,7 +2,9 @@
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->get('/home', \Konbu\Controller\HomeController::class . ':index');
+$app->get('/', function(){
+    phpinfo();
+});
 
 $app->group('/instances', function () {
     $this->map(['GET'], '', '\Konbu\Controller\InstanceController:index');
